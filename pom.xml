@@ -262,7 +262,7 @@
     </dependencies>
 
     <build>
-        <finalName>Practice</finalName>
+        <finalName>dailyTools</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>

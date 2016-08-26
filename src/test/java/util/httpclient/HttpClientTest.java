@@ -1,9 +1,13 @@
-package util;
+package util.httpclient;
 
+import net.sf.json.JSONObject;
+import org.apache.http.Header;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicHeader;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +19,7 @@ public class HttpClientTest {
 	private static Logger logger = LoggerFactory.getLogger(HttpClientTest.class);
 
 	@Test
+	@Ignore
 	public void testHttpClient() {
 		String remoteUrl = "http://jenkins.oneplus.org:8080/job/chaos/235/";
 		try {
@@ -32,6 +37,17 @@ public class HttpClientTest {
 		} catch (Exception e) {
 			logger.error("错误:", e);
 		}
+	}
+
+	@Test
+	public void testGet(){
+		HttpClientUtil httpClientUtil =new HttpClientUtil();
+		String remoteUrl = "http://gitlabhost/api/v3/projects/2/repository/branches";
+		Header header = new BasicHeader("PRIVATE-TOKEN", "tokenValue ");
+		Header[] headers = new Header[1];
+		headers[0] = header;
+		JSONObject result = httpClientUtil.get(remoteUrl, headers);
+		logger.info(result.toString());
 	}
 
 }

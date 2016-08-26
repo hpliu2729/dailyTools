@@ -1,7 +1,6 @@
-package util.FastDfs;
+package util.fastDFS;
 
 import org.junit.Test;
-import util.fastDfs.FastDfsUtil;
 
 import java.io.*;
 

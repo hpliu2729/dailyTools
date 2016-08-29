@@ -11,6 +11,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.ConfigDriver;
 
 /**
  * Created by xuyexin on 16/3/2.
@@ -42,8 +43,10 @@ public class HttpClientTest {
 	@Test
 	public void testGet(){
 		HttpClientUtil httpClientUtil =new HttpClientUtil();
-		String remoteUrl = "http://gitlabhost/api/v3/projects/2/repository/branches";
-		Header header = new BasicHeader("PRIVATE-TOKEN", "tokenValue ");
+		String gitlabHost = ConfigDriver.getString("gitlab.host");
+		String privateToken = ConfigDriver.getString("gitlab.private.token");
+		String remoteUrl = gitlabHost + "/api/v3/projects/2/repository/branches/master";
+		Header header = new BasicHeader("PRIVATE-TOKEN", privateToken);
 		Header[] headers = new Header[1];
 		headers[0] = header;
 		JSONObject result = httpClientUtil.get(remoteUrl, headers);

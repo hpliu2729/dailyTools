@@ -1,4 +1,4 @@
-package study.datastructer;
+package study.algonithm;
 
 import java.util.ArrayList;
 import java.util.Date;
